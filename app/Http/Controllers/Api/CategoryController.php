@@ -10,9 +10,17 @@ use Illuminate\Support\Facades\Log;
 class CategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *     path="/api/categories/",
+     *     tags={"Category"},
+     *     summary="Return all category",
+     *     description="Return all category with pagination",
+     *     operationId="getCategories",
+     *     @OA\Response(
+     *         response="default",
+     *         description="successful operation"
+     *     )
+     * )
      */
     public function index()
     {
@@ -33,10 +41,26 @@ class CategoryController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *     path="/api/categories/{id}",
+     *     tags={"Category"},
+     *     summary="Return detail category",
+     *     description="Return detail category by Id",
+     *     operationId="getCategoriesById",
+     *     @OA\Parameter(
+     *          name="id",
+     *          description="ID of Categories to use",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="successful operation"
+     *     )
+     * )
      */
     public function show($id)
     {
