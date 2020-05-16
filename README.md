@@ -52,3 +52,10 @@
 -   Why ?
     -   Sekalian belajar Github dan kolaborasi di Github
     -   Nanti
+
+## API DOCUMENTATION
+
+- Dokumentasi API Dibuat Pakai Swagger
+- Cara bisa diakses [ http://localhost:8000/api/documentation ]
+- Bisa ditambah setiap function di Controller
+- Setelah dibuat bisa di generate dengan Command Line [ php artisan l5-swagger:generate ]
