@@ -1,0 +1,12 @@
+0.0.0.0
+root /var/www/public
+gzip
+fastcgi / 127.0.0.1:9000 php
+rewrite {
+    regexp .*
+    ext /
+    to /index.php?{query}
+}
+
+errors stdout
+on startup php-fpm --nodaemonize
