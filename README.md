@@ -7,7 +7,13 @@
     -   [x] Buat Model (database)
     -   [ ] Buat Resource Controller (handler dari routes)
     -   [ ] Register routes
+    - [ ] Faker & Factory
+        - Bikin Factory
+        - Bikin Seeder 
 -   [ ] Item
+
+- [ ] Pasang Soft delete
+- [ ] Migration alter database
 
 ## Why Laravel ?
 

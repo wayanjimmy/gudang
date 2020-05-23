@@ -12,12 +12,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::create(['name' => 'Baju']);
-        Category::create(['name' => 'Celana']);
-        Category::create(['name' => 'Elektronik']);
-
-        for ($i=0; $i < 100; $i++) {
-            Category::create(['name' => 'Category' . $i]);
-        }
+        factory(App\Category::class, 50)->create();
     }
 }
