@@ -5,11 +5,19 @@
 -   [x] Auth
 -   [ ] Category
     -   [x] Buat Model (database)
-    -   [ ] Buat Resource Controller (handler dari routes)
-    -   [ ] Register routes
-    - [ ] Faker & Factory
-        - Bikin Factory
-        - Bikin Seeder 
+    -   [x] Buat Resource Controller (handler dari routes)
+    -   [x] Register routes
+    -   [x] Update Category Page
+    -   [x] Create Category Page
+    -   [x] Delete Category Page
+    -   [x] Soft delete
+- [ ] Setup Laravel Permission
+- [ ] Item CRUD Page
+- [ ] Cara override Auth
+
+    - [x] Faker & Factory
+        - [x] Bikin Factory
+        - [x]Bikin Seeder 
 -   [ ] Item
 
 - [ ] Pasang Soft delete

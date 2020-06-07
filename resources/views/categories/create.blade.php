@@ -7,22 +7,14 @@
             <div class="card">
                 <div class="card-header">Categories</div>
                 <div class="card-body">
-                    <form action="{{ route('categories.update', $category->id) }}" method="POST">
-                        @method('PUT')
+                    <form action="{{ route('categories.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="name" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter name" value="{{ $category->name }}">
+                            <input type="name" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter name" value="">
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
-
-                    <h2>History</h2>
-                    <ul>
-                        @foreach($activities as $activity)
-                        <li>({{ $activity->subject }}): {{ $activity->description }}</li>
-                        @endforeach
-                    </ul>
                 </div>
             </div>
         </div>

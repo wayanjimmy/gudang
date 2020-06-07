@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -36,5 +37,27 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Handle an authentication attempt.
+     *
+     * @param  \Illuminate\Http\Request $request
+     *
+     * @return Response
+     */
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            dd($user);
+
+            activity()->log(sprintf("%s lagi login", $user->email));
+
+            return redirect()->intended($this->redirectTo);
+        }
     }
 }

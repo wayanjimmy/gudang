@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Spatie\Activitylog\Models\Activity;
 
 class CategoryController extends Controller
 {
@@ -20,6 +21,7 @@ class CategoryController extends Controller
             ->when($search, function ($query) use ($search) {
                 $query->where('name', 'like', '%'. $search .'%');
             })
+            ->orderBy('created_at', 'desc')
             ->paginate();
 
         return view('categories.index', compact('categories', 'search'));
@@ -32,7 +34,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //TODO: show create category form
+        return view('categories.create');
     }
 
     /**
@@ -43,7 +45,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //TODO: insert new data to database
+        Category::create($request->only('name'));
+
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -67,7 +71,9 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        return view('categories.edit', compact('category'));
+        $activities = Activity::where('subject_type', 'App\\Category')->where('subject_id', $id)->get();
+
+        return view('categories.edit', compact('category', 'activities'));
     }
 
     /**
@@ -83,7 +89,7 @@ class CategoryController extends Controller
 
         $category->update($request->only(['name']));
 
-        return redirect('/categories');
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -94,6 +100,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //TODO: delete data from database
+        $category = Category::find($id);
+        $category->delete();
+
+        return redirect()->route('categories.index');
     }
 }

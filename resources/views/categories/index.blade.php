@@ -13,6 +13,8 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Search</button>
                     </form>
+                    <hr />
+                    <a href="{{ route('categories.create') }}">Create</a>
                     <table class="table">
                         <thead>
                             <tr>
@@ -27,7 +29,11 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $category->name }}</td>
                                     <td>
-                                        <a href="{{ route('categories.edit', $category->id) }}">Edit</a> | Delete
+                                        <a href="{{ route('categories.edit', $category->id) }}">Edit</a> | <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+    @method('DELETE')
+    @csrf
+    <button type="submit" class="btn btn-link" onclick="return confirm('Are you sure?')">Delete</button>
+</form>
                                     </td>
                                 </tr>
                             @endforeach
